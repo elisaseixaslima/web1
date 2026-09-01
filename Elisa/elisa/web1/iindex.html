@@ -1,0 +1,510 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>O Conto da Aia | Gilead</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            background: #f3eee4;
+            color: #292522;
+            line-height: 1.7;
+        }
+
+        /* CABEÇALHO */
+
+        header {
+            background: #641f26;
+            color: #f8f2e8;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(
+                    rgba(45, 8, 12, 0.25),
+                    rgba(45, 8, 12, 0.55)
+                );
+            pointer-events: none;
+        }
+
+        nav {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 7%;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #f8f2e8;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #e5b7a7;
+        }
+
+        /* HERO */
+
+        .hero {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 70px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hero-subtitle {
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-size: 0.85rem;
+            color: #e5b7a7;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6.5rem);
+            line-height: 1;
+            margin-bottom: 30px;
+            letter-spacing: -2px;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: 0 auto 35px;
+            font-size: 1.15rem;
+            color: #eee4d8;
+        }
+
+        .hero-button {
+            display: inline-block;
+            padding: 14px 32px;
+            border: 1px solid #e5b7a7;
+            color: #f8f2e8;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            transition: 0.3s;
+        }
+
+        .hero-button:hover {
+            background: #f8f2e8;
+            color: #641f26;
+        }
+
+        /* CONTEÚDO */
+
+        main {
+            max-width: 1150px;
+            margin: auto;
+            padding: 90px 25px;
+        }
+
+        .intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 80px;
+        }
+
+        .section-label {
+            color: #641f26;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .intro h2 {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            color: #321719;
+        }
+
+        .intro p {
+            margin-bottom: 15px;
+            color: #554b47;
+        }
+
+        /* MENU */
+
+        .menu-section h2 {
+            text-align: center;
+            font-size: 2.3rem;
+            color: #321719;
+            margin-bottom: 45px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .menu-card {
+            background: #fffaf1;
+            border: 1px solid #ddd1c4;
+            padding: 30px;
+            text-decoration: none;
+            color: #292522;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: 0.3s ease;
+            position: relative;
+        }
+
+        .menu-card::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: #641f26;
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: 0.3s ease;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(45, 20, 20, 0.12);
+        }
+
+        .menu-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .card-number {
+            color: #641f26;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+        }
+
+        .menu-card h3 {
+            font-size: 1.45rem;
+            color: #321719;
+            margin: 12px 0;
+        }
+
+        .menu-card p {
+            color: #756b66;
+            font-size: 0.95rem;
+        }
+
+        /* FRASE */
+
+        .quote {
+            margin-top: 90px;
+            padding: 70px 30px;
+            background: #321719;
+            color: #f8f2e8;
+            text-align: center;
+        }
+
+        .quote p {
+            max-width: 750px;
+            margin: auto;
+            font-size: 1.5rem;
+            font-style: italic;
+        }
+
+        .quote span {
+            display: block;
+            margin-top: 20px;
+            color: #d9b4a7;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        /* RODAPÉ */
+
+        footer {
+            background: #211416;
+            color: #cfc2b8;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        footer h3 {
+            color: #f8f2e8;
+            margin-bottom: 8px;
+        }
+
+        footer p {
+            font-size: 0.85rem;
+        }
+
+        /* RESPONSIVIDADE */
+
+        @media (max-width: 850px) {
+            .nav-links {
+                display: none;
+            }
+
+            .menu-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                justify-content: center;
+            }
+
+            .hero {
+                padding: 50px 20px;
+            }
+
+            .hero h1 {
+                font-size: 3.3rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            main {
+                padding: 65px 18px;
+            }
+
+            .intro h2 {
+                font-size: 2rem;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quote p {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+
+        <nav>
+            <div class="logo">Gilead</div>
+
+            <ul class="nav-links">
+                <li><a href="sobre.html">Obra</a></li>
+                <li><a href="personagens.html">Personagens</a></li>
+                <li><a href="contexto.html">Contexto</a></li>
+                <li><a href="temas.html">Temas</a></li>
+                <li><a href="analise.html">Análise</a></li>
+                <li><a href="adaptacao.html">Adaptação</a></li>
+            </ul>
+        </nav>
+
+        <div class="hero">
+            <div class="hero-content">
+
+                <div class="hero-subtitle">
+                    Um estudo sobre poder, controle e resistência
+                </div>
+
+                <h1>O Conto<br>da Aia</h1>
+
+                <p>
+                    Uma jornada pelo universo criado por
+                    Margaret Atwood e pela sociedade distópica
+                    de Gilead.
+                </p>
+
+                <a href="#explorar" class="hero-button">
+                    Explorar a obra
+                </a>
+
+            </div>
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <section class="intro" id="explorar">
+
+            <div class="section-label">Sobre o livro</div>
+
+            <h2>Bem-vindo a Gilead</h2>
+
+            <p>
+                <strong>O Conto da Aia</strong>, escrito pela autora
+                canadense Margaret Atwood, é um romance distópico
+                publicado em 1985.
+            </p>
+
+            <p>
+                A história apresenta Gilead, uma sociedade autoritária
+                na qual o poder político e religioso controla
+                profundamente a vida de seus cidadãos.
+            </p>
+
+            <p>
+                Neste site, você poderá conhecer a obra, seus
+                personagens, o contexto histórico, seus principais
+                temas, uma análise do romance e sua adaptação para
+                a televisão.
+            </p>
+
+        </section>
+
+
+        <section class="menu-section">
+
+            <div class="section-label" style="text-align:center;">
+                Explore
+            </div>
+
+            <h2>Conheça a obra</h2>
+
+            <div class="menu-grid">
+
+                <a href="sobre.html" class="menu-card">
+                    <span class="card-number">01</span>
+                    <div>
+                        <h3>Sobre a obra</h3>
+                        <p>
+                            Conheça o livro e sua autora.
+                        </p>
+                    </div>
+                </a>
+
+                <a href="personagens.html" class="menu-card">
+                    <span class="card-number">02</span>
+                    <div>
+                        <h3>Personagens</h3>
+                        <p>
+                            Descubra os personagens centrais da história.
+                        </p>
+                    </div>
+                </a>
+
+                <a href="contexto.html" class="menu-card">
+                    <span class="card-number">03</span>
+                    <div>
+                        <h3>Contexto</h3>
+                        <p>
+                            Entenda o contexto histórico e social da obra.
+                        </p>
+                    </div>
+                </a>
+
+                <a href="temas.html" class="menu-card">
+                    <span class="card-number">04</span>
+                    <div>
+                        <h3>Temas principais</h3>
+                        <p>
+                            Explore os temas presentes no romance.
+                        </p>
+                    </div>
+                </a>
+
+                <a href="analise.html" class="menu-card">
+                    <span class="card-number">05</span>
+                    <div>
+                        <h3>Análise</h3>
+                        <p>
+                            Uma leitura crítica dos elementos da obra.
+                        </p>
+                    </div>
+                </a>
+
+                <a href="adaptacao.html" class="menu-card">
+                    <span class="card-number">06</span>
+                    <div>
+                        <h3>Adaptação</h3>
+                        <p>
+                            Conheça a adaptação da história para a televisão.
+                        </p>
+                    </div>
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <section class="quote">
+
+            <p>
+                Uma obra sobre memória, identidade, poder
+                e a capacidade de resistir diante do controle.
+            </p>
+
+            <span>Margaret Atwood · O Conto da Aia</span>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <h3>O Conto da Aia</h3>
+
+        <p>
+            Site desenvolvido para fins educacionais.
+        </p>
+
+    </footer>
+
+</body>
+</html>
+

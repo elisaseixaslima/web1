@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Temas | O Conto da Aia</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            background: #f3eee4;
+            color: #292522;
+            line-height: 1.7;
+        }
+
+        /* CABEÇALHO */
+
+        header {
+            background: #641f26;
+            color: #f8f2e8;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 7%;
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .logo {
+            color: #f8f2e8;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        nav a {
+            color: #f8f2e8;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #e5b7a7;
+        }
+
+        /* HERO */
+
+        .hero {
+            text-align: center;
+            padding: 90px 20px;
+        }
+
+        .hero small {
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #e5b7a7;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            line-height: 1;
+            margin: 20px 0;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: auto;
+            color: #eee4d8;
+            font-size: 1.1rem;
+        }
+
+        /* CONTEÚDO */
+
+        main {
+            max-width: 1100px;
+            margin: auto;
+            padding: 80px 25px;
+        }
+
+        .intro {
+            max-width: 800px;
+            margin: 0 auto 70px;
+            text-align: center;
+        }
+
+        .section-label {
+            color: #641f26;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #321719;
+            font-size: 2.3rem;
+            margin-bottom: 20px;
+        }
+
+        .intro p,
+        .theme-card p,
+        .reflection p {
+            color: #554b47;
+            margin-bottom: 15px;
+        }
+
+        /* TEMAS */
+
+        .themes {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .theme-card {
+            background: #fffaf1;
+            border: 1px solid #ddd1c4;
+            padding: 35px;
+            position: relative;
+            overflow: hidden;
+            transition: 0.3s ease;
+        }
+
+        .theme-card::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 5px;
+            height: 100%;
+            background: #641f26;
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: 0.3s ease;
+        }
+
+        .theme-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 30px rgba(45,20,20,0.12);
+        }
+
+        .theme-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .number {
+            color: #641f26;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+        }
+
+        .theme-card h3 {
+            color: #321719;
+            font-size: 1.65rem;
+            margin: 12px 0 15px;
+        }
+
+        /* DESTAQUE */
+
+        .highlight {
+            margin: 75px 0;
+            padding: 55px;
+            background: #321719;
+            color: #f8f2e8;
+            border-left: 6px solid #641f26;
+        }
+
+        .highlight h2 {
+            color: #f8f2e8;
+        }
+
+        .highlight p {
+            color: #e5d9cf;
+            margin-bottom: 15px;
+        }
+
+        /* REFLEXÃO */
+
+        .reflection {
+            background: #eadfd2;
+            border: 1px solid #d6c6b8;
+            padding: 50px;
+            margin-top: 70px;
+        }
+
+        .reflection h2 {
+            margin-bottom: 15px;
+        }
+
+        .reflection strong {
+            color: #641f26;
+        }
+
+        /* VOLTAR */
+
+        .back {
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .back a {
+            display: inline-block;
+            padding: 13px 28px;
+            border: 1px solid #641f26;
+            color: #641f26;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+
+        .back a:hover {
+            background: #641f26;
+            color: #f8f2e8;
+        }
+
+        /* RODAPÉ */
+
+        footer {
+            background: #211416;
+            color: #cfc2b8;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        footer h3 {
+            color: #f8f2e8;
+            margin-bottom: 8px;
+        }
+
+        footer p {
+            color: #cfc2b8;
+            font-size: 0.85rem;
+        }
+
+        /* RESPONSIVIDADE */
+
+        @media (max-width: 750px) {
+
+            nav {
+                justify-content: center;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .themes {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 70px 20px;
+            }
+
+            .highlight,
+            .reflection {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <nav>
+
+        <a href="index.html" class="logo">Gilead</a>
+
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="sobre.html">Obra</a></li>
+            <li><a href="personagens.html">Personagens</a></li>
+            <li><a href="contexto.html">Contexto</a></li>
+            <li><a href="temas.html">Temas</a></li>
+            <li><a href="analise.html">Análise</a></li>
+            <li><a href="adaptacao.html">Adaptação</a></li>
+        </ul>
+
+    </nav>
+
+
+    <div class="hero">
+
+        <small>Ideias centrais da narrativa</small>
+
+        <h1>Temas</h1>
+
+        <p>
+            Os principais temas presentes em
+            <em>O Conto da Aia</em> e sua relação com a sociedade de Gilead.
+        </p>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <section class="intro">
+
+        <div class="section-label">Além da história</div>
+
+        <h2>O que a obra questiona?</h2>
+
+        <p>
+            <em>O Conto da Aia</em> apresenta uma sociedade fictícia,
+            mas seus temas estão relacionados a questões políticas,
+            sociais e humanas que ultrapassam o universo da narrativa.
+        </p>
+
+        <p>
+            A obra utiliza a distopia para discutir poder, liberdade,
+            desigualdade, identidade e resistência.
+        </p>
+
+    </section>
+
+
+    <section class="themes">
+
+        <article class="theme-card">
+
+            <span class="number">01</span>
+
+            <h3>Poder e autoritarismo</h3>
+
+            <p>
+                Gilead é governada por um regime autoritário que
+                concentra o poder e estabelece regras rígidas para
+                controlar a sociedade.
+            </p>
+
+            <p>
+                O romance mostra como o poder pode ser utilizado para
+                limitar escolhas individuais e controlar a vida cotidiana.
+            </p>
+
+        </article>
+
+
+        <article class="theme-card">
+
+            <span class="number">02</span>
+
+            <h3>Liberdade</h3>
+
+            <p>
+                A liberdade é um dos elementos mais importantes da obra.
+                Os personagens vivem em uma sociedade onde diversas
+                escolhas pessoais são determinadas pelo Estado.
+            </p>
+
+            <p>
+                A narrativa mostra o contraste entre a liberdade existente
+                no passado e as limitações impostas pelo regime.
+            </p>
+
+        </article>
+
+
+        <article class="theme-card">
+
+            <span class="number">03</span>
+
+            <h3>Controle sobre as mulheres</h3>
+
+            <p>
+                A sociedade de Gilead estabelece funções específicas
+                para as mulheres e limita profundamente sua autonomia.
+            </p>
+
+            <p>
+                A obra questiona a utilização de estruturas políticas,
+                sociais e religiosas para controlar os corpos e as
+                escolhas das mulheres.
+            </p>
+
+        </article>
+
+
+        <article class="theme-card">
+
+            <span class="number">04</span>
+
+            <h3>Identidade</h3>
+
+            <p>
+                A identidade individual é ameaçada quando os personagens
+                passam a ser definidos principalmente por suas funções
+                dentro da sociedade.
+            </p>
+
+            <p>
+                Para Offred, preservar suas memórias e sua consciência
+                de quem era antes de Gilead torna-se uma forma importante
+                de manter sua individualidade.
+            </p>
+
+        </article>
+
+
+        <article class="theme-card">
+
+            <span class="number">05</span>
+
+            <h3>Religião e ideologia</h3>
+
+            <p>
+                O regime de Gilead utiliza uma interpretação religiosa
+                específica como base para suas leis e sua organização.
+            </p>
+
+            <p>
+                A narrativa questiona como discursos religiosos podem
+                ser utilizados por estruturas de poder para justificar
+                regras e comportamentos.
+            </p>
+
+        </article>
+
+
+        <article class="theme-card">
+
+            <span class="number">06</span>
+
+            <h3>Resistência</h3>
+
+            <p>
+                Mesmo dentro de uma sociedade extremamente controlada,
+                existem diferentes formas de resistência.
+            </p>
+
+            <p>
+                A resistência pode aparecer por meio de pequenas ações,
+                da preservação das memórias, da solidariedade e da
+                tentativa de recuperar a própria autonomia.
+            </p>
+
+        </article>
+
+
+        <article class="theme-card">
+
+            <span class="number">07</span>
+
+            <h3>Memória</h3>
+
+            <p>
+                As lembranças do passado possuem um papel fundamental
+                na narrativa.
+            </p>
+
+            <p>
+                As memórias permitem que Offred compare sua vida anterior
+                com a realidade de Gilead e mantenha uma conexão com sua
+                antiga identidade.
+            </p>
+
+        </article>
+
+
+        <article class="theme-card">
+
+            <span class="number">08</span>
+
+            <h3>Desigualdade social</h3>
+
+            <p>
+                Gilead apresenta uma sociedade organizada por diferentes
+                classes e funções, nas quais cada grupo possui direitos
+                e privilégios distintos.
+            </p>
+
+            <p>
+                Essa estrutura mostra como a desigualdade pode ser
+                incorporada às próprias instituições de uma sociedade.
+            </p>
+
+        </article>
+
+    </section>
+
+
+    <section class="highlight">
+
+        <h2>O tema central: controle</h2>
+
+        <p>
+            Muitos dos temas apresentados no livro estão relacionados
+            a uma mesma questão: o controle sobre a vida individual.
+        </p>
+
+        <p>
+            O Estado de Gilead controla informações, comportamentos,
+            relações sociais e papéis dentro da sociedade. Ao mostrar
+            esse sistema pela perspectiva de Offred, a obra evidencia
+            os efeitos desse controle sobre a identidade e a liberdade.
+        </p>
+
+    </section>
+
+
+    <section class="reflection">
+
+        <div class="section-label">Reflexão</div>
+
+        <h2>Por que esses temas continuam importantes?</h2>
+
+        <p>
+            A força de uma distopia está em fazer o leitor refletir
+            sobre problemas que podem existir fora da ficção.
+        </p>
+
+        <p>
+            <strong>
+                O Conto da Aia utiliza Gilead para questionar até onde
+                uma sociedade pode permitir que o poder controle a
+                liberdade de seus indivíduos.
+            </strong>
+        </p>
+
+        <p>
+            Por isso, os temas do romance continuam relevantes para
+            discussões sobre direitos, democracia, igualdade e liberdade.
+        </p>
+
+    </section>
+
+
+    <div class="back">
+        <a href="index.html">← Voltar para o início</a>
+    </div>
+
+</main>
+
+
+<footer>
+
+    <h3>O Conto da Aia</h3>
+
+    <p>
+        Site desenvolvido para fins educacionais.
+    </p>
+
+</footer>
+
+</body>
+</html>
+```
+

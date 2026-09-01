@@ -1,0 +1,626 @@
+   <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            background: #f3eee4;
+            color: #292522;
+            line-height: 1.7;
+        }
+
+        /* CABEÇALHO */
+
+        header {
+            background: #641f26;
+            color: #f8f2e8;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 7%;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .logo {
+            color: #f8f2e8;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        nav a {
+            color: #f8f2e8;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #e5b7a7;
+        }
+
+        /* HERO */
+
+        .hero {
+            text-align: center;
+            padding: 90px 20px;
+        }
+
+        .hero small {
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #e5b7a7;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            line-height: 1;
+            margin: 20px 0;
+        }
+
+        .hero p {
+            max-width: 720px;
+            margin: auto;
+            color: #eee4d8;
+            font-size: 1.1rem;
+        }
+
+        /* CONTEÚDO */
+
+        main {
+            max-width: 1100px;
+            margin: auto;
+            padding: 80px 25px;
+        }
+
+        section {
+            margin-bottom: 75px;
+        }
+
+        .intro {
+            max-width: 820px;
+            margin: 0 auto 75px;
+            text-align: center;
+        }
+
+        .section-label {
+            color: #641f26;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #321719;
+            font-size: 2.3rem;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: #641f26;
+            font-size: 1.45rem;
+            margin-bottom: 12px;
+        }
+
+        p {
+            color: #554b47;
+            margin-bottom: 17px;
+        }
+
+        /* INFORMAÇÕES DA OBRA */
+
+        .book-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .info-card {
+            background: #fffaf1;
+            border: 1px solid #ddd1c4;
+            padding: 30px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 28px rgba(45, 20, 20, 0.10);
+        }
+
+        .info-card span {
+            display: block;
+            color: #641f26;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.75rem;
+            margin-bottom: 8px;
+        }
+
+        .info-card h3 {
+            margin-bottom: 0;
+        }
+
+        /* SOBRE A OBRA */
+
+        .content-box {
+            background: #fffaf1;
+            border: 1px solid #ddd1c4;
+            padding: 45px;
+            border-left: 6px solid #641f26;
+        }
+
+        /* AUTORA */
+
+        .author {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: stretch;
+        }
+
+        .author-card {
+            background: #eadfd2;
+            border: 1px solid #d6c6b8;
+            padding: 40px;
+        }
+
+        .author-card h2 {
+            margin-bottom: 15px;
+        }
+
+        /* DESTAQUE */
+
+        .highlight {
+            background: #321719;
+            padding: 55px;
+            border-left: 6px solid #641f26;
+        }
+
+        .highlight h2 {
+            color: #f8f2e8;
+        }
+
+        .highlight p {
+            color: #e5d9cf;
+        }
+
+        /* CARDS TEMÁTICOS */
+
+        .themes {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+            margin-top: 35px;
+        }
+
+        .theme-card {
+            background: #fffaf1;
+            border: 1px solid #ddd1c4;
+            padding: 30px;
+            transition: 0.3s;
+        }
+
+        .theme-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 28px rgba(45, 20, 20, 0.10);
+        }
+
+        .theme-card h3 {
+            margin-bottom: 8px;
+        }
+
+        /* VOLTAR */
+
+        .back {
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .back a {
+            display: inline-block;
+            padding: 13px 28px;
+            border: 1px solid #641f26;
+            color: #641f26;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+
+        .back a:hover {
+            background: #641f26;
+            color: #f8f2e8;
+        }
+
+        /* RODAPÉ */
+
+        footer {
+            background: #211416;
+            color: #cfc2b8;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        footer h3 {
+            color: #f8f2e8;
+            margin-bottom: 8px;
+        }
+
+        footer p {
+            color: #cfc2b8;
+            font-size: 0.85rem;
+        }
+
+        /* RESPONSIVO */
+
+        @media (max-width: 800px) {
+
+            nav {
+                justify-content: center;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .book-info,
+            .author,
+            .themes {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 70px 20px;
+            }
+
+            .content-box,
+            .highlight,
+            .author-card {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <nav>
+
+        <a href="index.html" class="logo">Gilead</a>
+
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="sobre.html">Obra</a></li>
+            <li><a href="personagens.html">Personagens</a></li>
+            <li><a href="contexto.html">Contexto</a></li>
+            <li><a href="temas.html">Temas</a></li>
+            <li><a href="analise.html">Análise</a></li>
+            <li><a href="adaptacao.html">Adaptação</a></li>
+        </ul>
+
+    </nav>
+
+
+    <div class="hero">
+
+        <small>Conheça a obra</small>
+
+        <h1>O Conto da Aia</h1>
+
+        <p>
+            Conheça o romance de Margaret Atwood, sua história,
+            sua autora e os principais elementos que formam a obra.
+        </p>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <section class="intro">
+
+        <div class="section-label">A obra</div>
+
+        <h2>Uma distopia sobre liberdade e poder</h2>
+
+        <p>
+            <em>O Conto da Aia</em> é um romance distópico escrito pela
+            autora canadense Margaret Atwood e publicado originalmente
+            em 1985.
+        </p>
+
+        <p>
+            A história apresenta uma sociedade autoritária chamada
+            Gilead, na qual o governo controla diversos aspectos da
+            vida da população.
+        </p>
+
+    </section>
+
+
+    <section>
+
+        <div class="book-info">
+
+            <div class="info-card">
+
+                <span>Autora</span>
+
+                <h3>Margaret Atwood</h3>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <span>Publicação</span>
+
+                <h3>1985</h3>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <span>Gênero</span>
+
+                <h3>Distopia</h3>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <div class="section-label">A história</div>
+
+        <h2>Uma sociedade chamada Gilead</h2>
+
+        <div class="content-box">
+
+            <p>
+                A narrativa se passa em uma versão futura dos Estados
+                Unidos, onde um regime autoritário conhecido como
+                República de Gilead assumiu o controle do país.
+            </p>
+
+            <p>
+                Nesse novo sistema, a sociedade é organizada de acordo
+                com funções rigidamente determinadas. As mulheres,
+                especialmente, passam a ter seus direitos e escolhas
+                severamente limitados.
+            </p>
+
+            <p>
+                A protagonista, Offred, é uma Aia. Sua função dentro
+                de Gilead está relacionada à reprodução, fazendo com
+                que sua vida seja controlada pelas regras do regime.
+            </p>
+
+            <p>
+                Enquanto enfrenta essa realidade, Offred relembra sua
+                vida antes de Gilead e tenta preservar sua identidade,
+                suas memórias e sua capacidade de pensar por si mesma.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <div class="section-label">A autora</div>
+
+        <div class="author">
+
+            <div class="author-card">
+
+                <h2>Margaret Atwood</h2>
+
+                <p>
+                    Margaret Atwood é uma escritora canadense conhecida
+                    por sua produção literária e por abordar questões
+                    sociais, políticas e relacionadas à condição humana.
+                </p>
+
+                <p>
+                    Ao longo de sua carreira, escreveu romances, poemas,
+                    contos e ensaios, tornando-se uma das autoras
+                    canadenses mais reconhecidas internacionalmente.
+                </p>
+
+            </div>
+
+
+            <div class="author-card">
+
+                <h2>Uma autora da literatura distópica</h2>
+
+                <p>
+                    Em <em>O Conto da Aia</em>, Atwood utiliza a ficção
+                    distópica para imaginar uma sociedade na qual
+                    diferentes formas de controle foram levadas ao
+                    extremo.
+                </p>
+
+                <p>
+                    A obra combina elementos políticos, sociais e
+                    psicológicos para construir uma narrativa que
+                    continua provocando discussões sobre liberdade,
+                    poder e direitos.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="highlight">
+
+        <h2>Por que a obra é uma distopia?</h2>
+
+        <p>
+            A distopia é um gênero literário que apresenta sociedades
+            fictícias marcadas por condições negativas, geralmente
+            associadas ao autoritarismo, à desigualdade ou à perda
+            de liberdade.
+        </p>
+
+        <p>
+            Gilead se encaixa nessa definição porque apresenta um
+            sistema político que controla profundamente a população
+            e restringe a autonomia dos indivíduos.
+        </p>
+
+    </section>
+
+
+    <section>
+
+        <div class="section-label">Principais elementos</div>
+
+        <h2>O que torna a obra marcante?</h2>
+
+        <div class="themes">
+
+            <div class="theme-card">
+
+                <h3>Gilead</h3>
+
+                <p>
+                    Uma sociedade autoritária construída sobre regras
+                    rígidas, hierarquia e controle.
+                </p>
+
+            </div>
+
+
+            <div class="theme-card">
+
+                <h3>Offred</h3>
+
+                <p>
+                    A protagonista apresenta ao leitor a realidade de
+                    Gilead através de suas experiências e memórias.
+                </p>
+
+            </div>
+
+
+            <div class="theme-card">
+
+                <h3>Liberdade</h3>
+
+                <p>
+                    A perda da liberdade individual é uma das questões
+                    centrais do romance.
+                </p>
+
+            </div>
+
+
+            <div class="theme-card">
+
+                <h3>Resistência</h3>
+
+                <p>
+                    A narrativa também apresenta diferentes formas de
+                    resistência diante do sistema.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <div class="section-label">Importância</div>
+
+        <h2>Uma obra que permanece relevante</h2>
+
+        <div class="content-box">
+
+            <p>
+                Mesmo tendo sido publicado em 1985, o romance continua
+                sendo discutido por apresentar questões relacionadas
+                ao poder, à liberdade, à desigualdade e ao controle
+                social.
+            </p>
+
+            <p>
+                Sua importância está também na capacidade de utilizar
+                uma história fictícia para estimular o leitor a pensar
+                criticamente sobre a sociedade e sobre a importância
+                dos direitos individuais.
+            </p>
+
+            <p>
+                <strong>
+                    Mais do que imaginar um futuro, a obra convida o
+                    leitor a observar o presente e questionar as
+                    estruturas de poder existentes ao seu redor.
+                </strong>
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <div class="back">
+        <a href="index.html">← Voltar para o início</a>
+    </div>
+
+</main>
+
+
+<footer>
+
+    <h3>O Conto da Aia</h3>
+
+    <p>
+        Site desenvolvido para fins educacionais.
+    </p>
+
+</footer>
+
+</body>
+</html>
+```
+

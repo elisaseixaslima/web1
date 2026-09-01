@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Personagens | O Conto da Aia</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            background: #f3eee4;
+            color: #292522;
+            line-height: 1.7;
+        }
+
+        /* CABEÇALHO */
+
+        header {
+            background: #641f26;
+            color: #f8f2e8;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 7%;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .logo {
+            color: #f8f2e8;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        nav a {
+            color: #f8f2e8;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #e5b7a7;
+        }
+
+        /* HERO */
+
+        .hero {
+            text-align: center;
+            padding: 90px 20px;
+        }
+
+        .hero small {
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #e5b7a7;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            line-height: 1;
+            margin: 20px 0;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: auto;
+            color: #eee4d8;
+            font-size: 1.1rem;
+        }
+
+        /* CONTEÚDO */
+
+        main {
+            max-width: 1100px;
+            margin: auto;
+            padding: 80px 25px;
+        }
+
+        .intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 70px;
+        }
+
+        .section-label {
+            color: #641f26;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #321719;
+            font-size: 2.3rem;
+            margin-bottom: 20px;
+        }
+
+        .intro p {
+            color: #554b47;
+            margin-bottom: 15px;
+        }
+
+        /* CARDS */
+
+        .characters {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .character-card {
+            background: #fffaf1;
+            border: 1px solid #ddd1c4;
+            padding: 35px;
+            position: relative;
+            overflow: hidden;
+            transition: 0.3s ease;
+        }
+
+        .character-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: #641f26;
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: 0.3s ease;
+        }
+
+        .character-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 30px rgba(45, 20, 20, 0.12);
+        }
+
+        .character-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .number {
+            color: #641f26;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+        }
+
+        .character-card h3 {
+            color: #321719;
+            font-size: 1.7rem;
+            margin: 10px 0 5px;
+        }
+
+        .role {
+            color: #641f26;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            margin-bottom: 18px;
+        }
+
+        .character-card p {
+            color: #554b47;
+            font-size: 0.96rem;
+            margin-bottom: 12px;
+        }
+
+        /* DESTAQUE */
+
+        .highlight {
+            margin: 70px 0;
+            padding: 55px;
+            background: #321719;
+            color: #f8f2e8;
+            border-left: 6px solid #641f26;
+        }
+
+        .highlight h2 {
+            color: #f8f2e8;
+        }
+
+        .highlight p {
+            color: #e5d9cf;
+        }
+
+        /* PERSONAGEM CENTRAL */
+
+        .featured {
+            margin-top: 70px;
+            background: #eadfd2;
+            padding: 50px;
+            border: 1px solid #d6c6b8;
+        }
+
+        .featured h2 {
+            margin-bottom: 15px;
+        }
+
+        .featured p {
+            color: #554b47;
+            margin-bottom: 15px;
+        }
+
+        .featured strong {
+            color: #641f26;
+        }
+
+        /* VOLTAR */
+
+        .back {
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .back a {
+            display: inline-block;
+            padding: 13px 28px;
+            border: 1px solid #641f26;
+            color: #641f26;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+
+        .back a:hover {
+            background: #641f26;
+            color: #f8f2e8;
+        }
+
+        /* RODAPÉ */
+
+        footer {
+            background: #211416;
+            color: #cfc2b8;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        footer h3 {
+            color: #f8f2e8;
+            margin-bottom: 8px;
+        }
+
+        footer p {
+            color: #cfc2b8;
+            font-size: 0.85rem;
+        }
+
+        /* RESPONSIVIDADE */
+
+        @media (max-width: 750px) {
+
+            nav {
+                justify-content: center;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .characters {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 70px 20px;
+            }
+
+            .highlight,
+            .featured {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <nav>
+
+        <a href="index.html" class="logo">Gilead</a>
+
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="sobre.html">Obra</a></li>
+            <li><a href="personagens.html">Personagens</a></li>
+            <li><a href="contexto.html">Contexto</a></li>
+            <li><a href="temas.html">Temas</a></li>
+            <li><a href="analise.html">Análise</a></li>
+            <li><a href="adaptacao.html">Adaptação</a></li>
+        </ul>
+
+    </nav>
+
+
+    <div class="hero">
+
+        <small>As pessoas por trás da história</small>
+
+        <h1>Personagens</h1>
+
+        <p>
+            Conheça os principais personagens de
+            <em>O Conto da Aia</em> e seus papéis dentro da sociedade de Gilead.
+        </p>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <section class="intro">
+
+        <div class="section-label">Quem são eles?</div>
+
+        <h2>Personagens de Gilead</h2>
+
+        <p>
+            Os personagens do romance representam diferentes posições
+            dentro da sociedade criada pelo regime de Gilead.
+        </p>
+
+        <p>
+            Por meio deles, Margaret Atwood apresenta diferentes
+            perspectivas sobre poder, controle, resistência,
+            desigualdade e liberdade.
+        </p>
+
+    </section>
+
+
+    <section>
+
+        <div class="characters">
+
+            <article class="character-card">
+
+                <span class="number">01</span>
+
+                <h3>Offred</h3>
+
+                <div class="role">
+                    Protagonista
+                </div>
+
+                <p>
+                    Offred é a protagonista e narradora da história.
+                    Ela vive em Gilead como uma Aia, sendo submetida
+                    às regras estabelecidas pelo regime.
+                </p>
+
+                <p>
+                    Sua narrativa permite ao leitor conhecer seus
+                    pensamentos, lembranças e sentimentos enquanto
+                    tenta preservar sua identidade.
+                </p>
+
+            </article>
+
+
+            <article class="character-card">
+
+                <span class="number">02</span>
+
+                <h3>O Comandante</h3>
+
+                <div class="role">
+                    Autoridade de Gilead
+                </div>
+
+                <p>
+                    O Comandante é uma das figuras de poder da sociedade
+                    de Gilead e ocupa uma posição privilegiada dentro
+                    do regime.
+                </p>
+
+                <p>
+                    Sua relação com Offred revela algumas das contradições
+                    existentes entre as regras oficiais e o comportamento
+                    daqueles que estão no poder.
+                </p>
+
+            </article>
+
+
+            <article class="character-card">
+
+                <span class="number">03</span>
+
+                <h3>Serena Joy</h3>
+
+                <div class="role">
+                    Esposa do Comandante
+                </div>
+
+                <p>
+                    Serena Joy é a esposa do Comandante e pertence à
+                    elite de Gilead.
+                </p>
+
+                <p>
+                    Apesar de ocupar uma posição privilegiada, ela também
+                    possui limitações impostas pelo próprio sistema,
+                    criando uma relação complexa com Offred.
+                </p>
+
+            </article>
+
+
+            <article class="character-card">
+
+                <span class="number">04</span>
+
+                <h3>Nick</h3>
+
+                <div class="role">
+                    Membro da casa do Comandante
+                </div>
+
+                <p>
+                    Nick trabalha na residência do Comandante e mantém
+                    uma relação próxima com Offred.
+                </p>
+
+                <p>
+                    Sua posição dentro de Gilead e suas atitudes fazem
+                    com que Offred tenha dúvidas sobre suas verdadeiras
+                    intenções.
+                </p>
+
+            </article>
+
+
+            <article class="character-card">
+
+                <span class="number">05</span>
+
+                <h3>Moira</h3>
+
+                <div class="role">
+                    Amiga de Offred
+                </div>
+
+                <p>
+                    Moira é uma das pessoas mais próximas de Offred.
+                    Antes da consolidação do regime, as duas já eram
+                    amigas.
+                </p>
+
+                <p>
+                    Sua personalidade independente representa uma forma
+                    de resistência diante das regras impostas por Gilead.
+                </p>
+
+            </article>
+
+
+            <article class="character-card">
+
+                <span class="number">06</span>
+
+                <h3>Ofglen</h3>
+
+                <div class="role">
+                    Companheira de compras
+                </div>
+
+                <p>
+                    Ofglen é designada para acompanhar Offred durante
+                    suas caminhadas e compras.
+                </p>
+
+                <p>
+                    A personagem desempenha um papel importante na
+                    história ao mostrar que existem formas de resistência
+                    escondidas dentro da sociedade de Gilead.
+                </p>
+
+            </article>
+
+
+            <article class="character-card">
+
+                <span class="number">07</span>
+
+                <h3>Tia Lydia</h3>
+
+                <div class="role">
+                    Responsável pelas Aias
+                </div>
+
+                <p>
+                    Tia Lydia é uma das responsáveis pela formação e
+                    disciplina das mulheres que serão Aias.
+                </p>
+
+                <p>
+                    Ela representa a maneira como o regime utiliza
+                    autoridade, doutrinação e vigilância para manter
+                    suas regras.
+                </p>
+
+            </article>
+
+
+            <article class="character-card">
+
+                <span class="number">08</span>
+
+                <h3>Luke</h3>
+
+                <div class="role">
+                    Companheiro de Offred
+                </div>
+
+                <p>
+                    Luke é o marido de Offred antes da transformação
+                    da sociedade e da criação de Gilead.
+                </p>
+
+                <p>
+                    As lembranças de sua vida anterior ajudam a mostrar
+                    ao leitor como era o mundo antes da consolidação
+                    do novo regime.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <section class="highlight">
+
+        <h2>Identidade e poder</h2>
+
+        <p>
+            Um dos elementos mais importantes dos personagens é a relação
+            entre identidade e poder. Em Gilead, muitas mulheres deixam
+            de ser reconhecidas por seus próprios nomes e passam a ser
+            identificadas de acordo com sua função social.
+        </p>
+
+        <p>
+            Essa mudança mostra como o regime tenta retirar a autonomia
+            individual e transformar pessoas em partes de uma estrutura
+            controlada pelo Estado.
+        </p>
+
+    </section>
+
+
+    <section class="featured">
+
+        <div class="section-label">Personagem principal</div>
+
+        <h2>Offred e a busca pela própria identidade</h2>
+
+        <p>
+            Offred ocupa uma posição central porque a história é
+            apresentada principalmente a partir de sua perspectiva.
+        </p>
+
+        <p>
+            Ao longo da narrativa, suas memórias do passado entram em
+            contraste com a realidade de Gilead. Essa comparação ajuda
+            a mostrar o impacto das mudanças políticas e sociais em sua
+            vida.
+        </p>
+
+        <p>
+            <strong>Mais do que uma personagem dentro de Gilead,
+            Offred representa a tentativa de preservar a própria
+            identidade em uma sociedade que procura controlá-la.</strong>
+        </p>
+
+    </section>
+
+
+    <div class="back">
+        <a href="index.html">← Voltar para o início</a>
+    </div>
+
+</main>
+
+
+<footer>
+
+    <h3>O Conto da Aia</h3>
+
+    <p>
+        Site desenvolvido para fins educacionais.
+    </p>
+
+</footer>
+
+</body>
+</html>
+```
+

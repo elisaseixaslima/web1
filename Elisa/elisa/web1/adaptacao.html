@@ -1,0 +1,646 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Adaptação | O Conto da Aia</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            background: #f3eee4;
+            color: #292522;
+            line-height: 1.7;
+        }
+
+        /* CABEÇALHO */
+
+        header {
+            background: #641f26;
+            color: #f8f2e8;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 7%;
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .logo {
+            color: #f8f2e8;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        nav a {
+            color: #f8f2e8;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #e5b7a7;
+        }
+
+        /* HERO */
+
+        .hero {
+            text-align: center;
+            padding: 90px 20px;
+        }
+
+        .hero small {
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #e5b7a7;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            line-height: 1;
+            margin: 20px 0;
+        }
+
+        .hero p {
+            max-width: 720px;
+            margin: auto;
+            color: #eee4d8;
+            font-size: 1.1rem;
+        }
+
+        /* CONTEÚDO */
+
+        main {
+            max-width: 1100px;
+            margin: auto;
+            padding: 80px 25px;
+        }
+
+        section {
+            margin-bottom: 75px;
+        }
+
+        .intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 70px;
+        }
+
+        .section-label {
+            color: #641f26;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #321719;
+            font-size: 2.3rem;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: #641f26;
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+
+        p {
+            color: #554b47;
+            margin-bottom: 17px;
+        }
+
+        /* INFORMAÇÕES */
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .info-card {
+            background: #fffaf1;
+            border: 1px solid #ddd1c4;
+            padding: 30px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 28px rgba(45,20,20,0.10);
+        }
+
+        .info-card span {
+            display: block;
+            color: #641f26;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.75rem;
+            margin-bottom: 8px;
+        }
+
+        .info-card h3 {
+            margin-bottom: 5px;
+        }
+
+        /* DESTAQUE */
+
+        .highlight {
+            background: #321719;
+            padding: 55px;
+            border-left: 6px solid #641f26;
+        }
+
+        .highlight h2 {
+            color: #f8f2e8;
+        }
+
+        .highlight p {
+            color: #e5d9cf;
+        }
+
+        /* DIFERENÇAS */
+
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-top: 35px;
+        }
+
+        .comparison-card {
+            background: #fffaf1;
+            border: 1px solid #ddd1c4;
+            padding: 35px;
+        }
+
+        .comparison-card.book {
+            border-top: 5px solid #641f26;
+        }
+
+        .comparison-card.series {
+            border-top: 5px solid #321719;
+        }
+
+        .comparison-card h3 {
+            margin-bottom: 20px;
+        }
+
+        .comparison-card ul {
+            padding-left: 20px;
+            color: #554b47;
+        }
+
+        .comparison-card li {
+            margin-bottom: 10px;
+        }
+
+        /* TEMPORADA */
+
+        .timeline {
+            border-left: 2px solid #641f26;
+            padding-left: 30px;
+            margin: 35px 0;
+        }
+
+        .timeline-item {
+            margin-bottom: 35px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #641f26;
+            border-radius: 50%;
+            left: -37px;
+            top: 8px;
+        }
+
+        .timeline-item strong {
+            display: block;
+            color: #641f26;
+            margin-bottom: 5px;
+        }
+
+        /* REFLEXÃO */
+
+        .reflection {
+            background: #eadfd2;
+            border: 1px solid #d6c6b8;
+            padding: 50px;
+        }
+
+        .reflection strong {
+            color: #641f26;
+        }
+
+        /* VOLTAR */
+
+        .back {
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .back a {
+            display: inline-block;
+            padding: 13px 28px;
+            border: 1px solid #641f26;
+            color: #641f26;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+
+        .back a:hover {
+            background: #641f26;
+            color: #f8f2e8;
+        }
+
+        /* RODAPÉ */
+
+        footer {
+            background: #211416;
+            color: #cfc2b8;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        footer h3 {
+            color: #f8f2e8;
+            margin-bottom: 8px;
+        }
+
+        footer p {
+            color: #cfc2b8;
+            font-size: 0.85rem;
+        }
+
+        /* RESPONSIVIDADE */
+
+        @media (max-width: 800px) {
+
+            nav {
+                justify-content: center;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 70px 20px;
+            }
+
+            .highlight,
+            .reflection {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <nav>
+
+        <a href="index.html" class="logo">Gilead</a>
+
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="sobre.html">Obra</a></li>
+            <li><a href="personagens.html">Personagens</a></li>
+            <li><a href="contexto.html">Contexto</a></li>
+            <li><a href="temas.html">Temas</a></li>
+            <li><a href="analise.html">Análise</a></li>
+            <li><a href="adaptacao.html">Adaptação</a></li>
+        </ul>
+
+    </nav>
+
+
+    <div class="hero">
+
+        <small>Da literatura para a televisão</small>
+
+        <h1>Adaptação</h1>
+
+        <p>
+            Conheça a adaptação televisiva de
+            <em>O Conto da Aia</em> e como a história de Gilead
+            ganhou uma nova forma de ser apresentada.
+        </p>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <section class="intro">
+
+        <div class="section-label">A série</div>
+
+        <h2>O livro ganhou uma nova vida</h2>
+
+        <p>
+            <em>O Conto da Aia</em> foi adaptado para a televisão em
+            uma série lançada em 2017. A produção expandiu o universo
+            apresentado no romance e levou a história de Gilead para
+            um público ainda maior.
+        </p>
+
+        <p>
+            A adaptação mantém elementos fundamentais da obra de
+            Margaret Atwood, mas também desenvolve personagens,
+            acontecimentos e histórias que não aparecem da mesma
+            maneira no livro.
+        </p>
+
+    </section>
+
+
+    <section>
+
+        <div class="info-grid">
+
+            <div class="info-card">
+
+                <span>Obra original</span>
+
+                <h3>1985</h3>
+
+                <p>
+                    Publicação do romance de Margaret Atwood.
+                </p>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <span>Adaptação</span>
+
+                <h3>2017</h3>
+
+                <p>
+                    Estreia da série televisiva baseada no romance.
+                </p>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <span>Formato</span>
+
+                <h3>Série</h3>
+
+                <p>
+                    Uma narrativa televisiva que expande o universo
+                    apresentado no livro.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="highlight">
+
+        <h2>Uma adaptação além do livro</h2>
+
+        <p>
+            O romance possui uma narrativa mais concentrada na
+            perspectiva de Offred. A série, por outro lado, consegue
+            acompanhar diferentes personagens e acontecimentos de
+            maneira mais ampla.
+        </p>
+
+        <p>
+            Isso permite que o espectador conheça outras partes de
+            Gilead e observe acontecimentos que não são apresentados
+            diretamente pela narradora no livro.
+        </p>
+
+    </section>
+
+
+    <section>
+
+        <div class="section-label">Livro × Série</div>
+
+        <h2>Principais diferenças</h2>
+
+        <div class="comparison">
+
+            <div class="comparison-card book">
+
+                <h3>📖 O livro</h3>
+
+                <ul>
+                    <li>
+                        A narrativa é centrada principalmente em Offred.
+                    </li>
+
+                    <li>
+                        O leitor conhece Gilead principalmente através
+                        das lembranças e observações da protagonista.
+                    </li>
+
+                    <li>
+                        A história apresenta uma narrativa mais
+                        concentrada e subjetiva.
+                    </li>
+
+                    <li>
+                        O final deixa algumas questões em aberto.
+                    </li>
+                </ul>
+
+            </div>
+
+
+            <div class="comparison-card series">
+
+                <h3>📺 A série</h3>
+
+                <ul>
+                    <li>
+                        Desenvolve diferentes personagens com maior
+                        profundidade.
+                    </li>
+
+                    <li>
+                        Mostra acontecimentos que acontecem fora da
+                        perspectiva de Offred.
+                    </li>
+
+                    <li>
+                        Expande a sociedade e o funcionamento de Gilead.
+                    </li>
+
+                    <li>
+                        Desenvolve a história para além dos acontecimentos
+                        do romance original.
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <div class="section-label">Expansão da história</div>
+
+        <h2>O universo de Gilead na televisão</h2>
+
+        <p>
+            Uma das principais características da adaptação é a
+            possibilidade de mostrar diferentes pontos de vista.
+            Enquanto o livro acompanha principalmente a experiência
+            de Offred, a série apresenta outros personagens e amplia
+            o conhecimento do espectador sobre a sociedade.
+        </p>
+
+        <div class="timeline">
+
+            <div class="timeline-item">
+
+                <strong>2017 — Primeira temporada</strong>
+
+                <p>
+                    A série apresenta a sociedade de Gilead e adapta
+                    acontecimentos centrais do romance.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <strong>Expansão dos personagens</strong>
+
+                <p>
+                    Personagens conhecidos do livro recebem histórias
+                    mais desenvolvidas e novas relações são exploradas.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <strong>Expansão do universo</strong>
+
+                <p>
+                    A narrativa televisiva passa a explorar regiões,
+                    acontecimentos e personagens que vão além da
+                    história original.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="reflection">
+
+        <div class="section-label">Reflexão</div>
+
+        <h2>Livro ou série?</h2>
+
+        <p>
+            As duas versões apresentam a mesma sociedade distópica,
+            mas utilizam linguagens diferentes para contar a história.
+        </p>
+
+        <p>
+            O livro permite uma experiência mais íntima da mente de
+            Offred, enquanto a série utiliza recursos visuais,
+            diferentes perspectivas e uma narrativa mais extensa.
+        </p>
+
+        <p>
+            <strong>
+                Por isso, a série não precisa ser vista apenas como uma
+                reprodução do livro, mas como uma interpretação audiovisual
+                que amplia o universo criado por Margaret Atwood.
+            </strong>
+        </p>
+
+    </section>
+
+
+    <div class="back">
+        <a href="index.html">← Voltar para o início</a>
+    </div>
+
+</main>
+
+
+<footer>
+
+    <h3>O Conto da Aia</h3>
+
+    <p>
+        Site desenvolvido para fins educacionais.
+    </p>
+
+</footer>
+
+</body>
+</html>
+```
+
